@@ -1,0 +1,42 @@
+Switch#
+Switch#conf t
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport mode access 
+Switch(config-if)#switchport port-security 
+Switch(config-if)#switchport port-security mac-address  0060.7038.83B5
+Switch(config-if)#switchport port-security violation shutdown
+
+Switch#sh interfaces fastEthernet 0/1
+FastEthernet0/1 is down, line protocol is down (err-disabled)
+  Hardware is Lance, address is 0001.964c.9401 (bia 0001.964c.9401)
+ BW 100000 Kbit, DLY 1000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+
+Switch#
+Switch#conf t
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#shutdown 
+Switch(config-if)#no shutdown 
+
+Switch#conf t
+Switch(config)#interface gigabitEthernet 0/1
+Switch(config-if)#switchport mode access 
+Switch(config-if)#switchport port-security 
+Switch(config-if)#switchport port-security maximum 2
+Switch(config-if)#switchport port-security violation restrict 
+Switch(config-if)#^Z
+Switch#
+
+Switch#
+Switch#conf t
+Switch(config)#interface gigabitEthernet 0/2
+Switch(config-if)#switchport mode access 
+Switch(config-if)#switchport port-security 
+Switch(config-if)#switchport port-security maximum 3
+Switch(config-if)#switchport port-security violation restrict 
+Switch(config-if)#^Z
+
+Switch#
+Switch#clear mac-address-table 
+Switch#
